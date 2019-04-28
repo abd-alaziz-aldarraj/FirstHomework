@@ -1,47 +1,47 @@
-
+// 4 marks
 package firsthomework;
 import java.io.IOException;
 
 //النيسب التاني
 public class ThreadNum2 extends Thread {
 	BlockingQueue q1;
-	
-	BlockingQueue q2;
-	
+
+	BlockingQueue q2; // 1/2 marks
+
 	private String rawDataFromFile;
-	
+
 	private String processedData;
-	
+
 	private String filename;
 
-	
-	public ThreadNum2(BlockingQueue q1, BlockingQueue q2) {
+
+	public ThreadNum2(BlockingQueue q1, BlockingQueue q2) { // 1/2 marks
 		this.q1 = q1;
 		this.q2 = q2;
 	}
 
 	@Override
 	public void run() {
-		
-		while (q2.count() <= q2.limit) {
+
+		while (q2.count() <= q2.limit) { // 2 marks
 			try {
-				
-				filename = q1.pop().toString();
+
+				filename = q1.pop().toString(); // 1/2 marks
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			try {
-				
+
 				rawDataFromFile = FileUtils.readFileAsString("data\\" + filename);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			// 
+			//
 			processedData = filename + SomeMethod.count(rawDataFromFile);
 			try {
-			
-				q2.add(processedData);
+
+				q2.add(processedData); // 1/2 marks
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -81,4 +81,3 @@ class ThirdThread extends Thread {
 
 	}
 }
-
